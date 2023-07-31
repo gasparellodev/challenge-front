@@ -25,7 +25,7 @@ export const Button: FC<{
         onClick={handleClick}
         disabled={theme === "disabled"}
         style={{ width, height }}
-        className={`${className} 
+        className={`
         flex 
         items-center 
         justify-center 
@@ -75,6 +75,7 @@ export const Button: FC<{
         hover:bg
         `
         }
+        ${className} 
         `}
       >
         {iconDirection === "left" && icon}
