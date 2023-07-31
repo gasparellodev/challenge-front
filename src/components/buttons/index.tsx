@@ -1,6 +1,7 @@
 import { FC, ReactElement } from "react";
 
 export const Button: FC<{
+  handleClick?: any;
   width?: string;
   height?: string;
   label: string;
@@ -10,6 +11,7 @@ export const Button: FC<{
   theme?: "primary" | "secundary" | "outline" | "disabled" | "load";
 }> = ({
   label,
+  handleClick,
   className,
   width,
   height,
@@ -20,6 +22,7 @@ export const Button: FC<{
   return (
     <>
       <button
+        onClick={handleClick}
         disabled={theme === "disabled"}
         style={{ width, height }}
         className={`${className} 
