@@ -5,6 +5,7 @@ import { FC, useState } from "react";
 import { Button } from "../buttons";
 import { PlayIcon } from "../svg-components/play-icon";
 import { OptionsIcon } from "../svg-components/options-icon";
+import { Input } from "../inputs";
 
 interface IClassCard {
   course_name: string;
@@ -18,6 +19,11 @@ interface IClassCard {
 
 export const CourseCard: FC<{ course: IClassCard }> = ({ course }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [detailsCourseModal, seSdetailsCourseModal] = useState(false);
+
+  const handleDetails = () => {
+    seSdetailsCourseModal(!detailsCourseModal);
+  };
 
   const handleSwitchModal = () => {
     setModalOpen(!modalOpen);
@@ -49,6 +55,7 @@ export const CourseCard: FC<{ course: IClassCard }> = ({ course }) => {
           className="text-[14px] font-[700] p-1 "
           icon={<PlayIcon />}
           label="Acessar área de aprendizagem"
+          handleClick={handleDetails}
         />
 
         <Button
@@ -101,6 +108,107 @@ export const CourseCard: FC<{ course: IClassCard }> = ({ course }) => {
           </div>
         )}
       </div>
+
+      {detailsCourseModal && (
+        <div
+          style={{ zIndex: 100 }}
+          className="flex left-0 justify-center py-20 absolute items-start w-full bg-opacity-50 bg-button-secundary-default"
+        >
+          <div className="relative bg-[#2A2E39] w-[928px] h-[626px] p-[36px] overflow-y-scroll ">
+            <h2>Detalhe do curso</h2>
+
+            <div className="flex flex-row items-center">
+              <Image
+                alt={course.course_name}
+                src={
+                  course.course_image ? course.course_image : defaultCourseImage
+                }
+                width={134}
+                height={134}
+                className="rounded object-cover pt-[30px]"
+              />
+
+              <div className="pl-10 flex flex-col">
+                <h3>{course.course_name}</h3>
+                <em className="text-[#646D85] text-[12px] pt-[16px]">AUTOR</em>
+                <p>Jhon Doe</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-5">
+              <div className="mt-10 bg-[#252932] h-[118px] overflow-y-scroll p-5">
+                <p className="text-[#646D85] text-[12px]">DESCRIÇÃO</p>
+                <p>{course.course_description}</p>
+              </div>
+
+              <div className="mt-10 bg-[#252932] h-[118px] overflow-y-scroll p-5">
+                <p className="text-[#646D85] text-[12px]">DETALHES</p>
+                <div className=" flex justify-between">
+                  <p className="text-[12px] font-[600]">Cattegoria</p>{" "}
+                  <em className="text-[12px] font-[600]">
+                    {course.course_category}
+                  </em>
+                </div>
+                <hr className="border-[#3D4353]" />
+
+                <div className=" flex justify-between">
+                  <p className="text-[12px] font-[600]">Tipo</p>{" "}
+                  <em className="text-[12px] font-[600]">
+                    {course.course_type}
+                  </em>
+                </div>
+                <hr className="border-[#3D4353]" />
+
+                <div className=" flex justify-between">
+                  <p className="text-[12px] font-[600]">Data de cadastro</p>{" "}
+                  <em className="text-[12px] font-[600]">01/01/2023</em>
+                </div>
+                <hr className="border-[#3D4353]" />
+              </div>
+
+            </div>
+              <div className="pt-10 flex justify-end w-ful">
+                <Button
+                  handleClick={handleDetails}
+                  label="Excluir curso"
+                  width="153px"
+                  height="36px"
+                  className="bg-[#F96C6C] right-5 bottom-20 hover:bg-[#fff]"
+                />
+              </div>
+
+            <Button
+              handleClick={handleDetails}
+              label=""
+              width="24px"
+              height="24px"
+              className="bg-transparent absolute right-5 top-5 hover:bg-[#fff]"
+              icon={
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.4831 12.9883L10.4949 8.00068L15.4831 3.01302C16.1702 2.32497 16.1702 1.20818 15.4848 0.51826C14.7959 -0.173346 13.6806 -0.171567 12.9917 0.51648L7.99999 5.50769L3.00831 0.51648C2.31939 -0.171567 1.20406 -0.173346 0.515137 0.51826C-0.172007 1.20809 -0.172008 2.32488 0.516912 3.01302L5.50513 8.00068L0.516912 12.9883C-0.172008 13.6764 -0.172007 14.7932 0.515137 15.4831C0.858753 15.8289 1.31155 16 1.76266 16C2.21376 16 2.66478 15.8271 3.0084 15.4848L8.00008 10.4936L12.9918 15.4848C13.3354 15.8289 13.7864 16 14.2375 16C14.6886 16 15.1414 15.8271 15.485 15.4831C16.172 14.7932 16.172 13.6764 15.4831 12.9883Z"
+                    fill="#93BC1E"
+                  />
+                </svg>
+              }
+            />
+
+            <Button
+              handleClick={handleDetails}
+              label="Voltar para minhas compras"
+              width="273px"
+              height="48px"
+              className="bg-primary absolute right-5 bottom-5 hover:bg-[#fff]"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

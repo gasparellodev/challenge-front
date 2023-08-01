@@ -88,6 +88,11 @@ export default function Home() {
   const [selectedPage, setSelectedPage] = useState(1);
   const [length, setLength] = useState();
   const [courseCreateModal, setCourseCreateModal] = useState(false);
+  const [detailsCourseModal, seSdetailsCourseModal] = useState(false);
+
+  const handleDetailsCourseModal = () => {
+    seSdetailsCourseModal(!detailsCourseModal);
+  };
 
   const handleCreateModal = () => {
     setCourseCreateModal(!courseCreateModal);
@@ -296,7 +301,7 @@ export default function Home() {
             </p>
 
             <Input
-              className="bg-[#252932] mb-[20px]"
+              className="bg-[#7784a5] mb-[20px]"
               title="Nome do curso"
               handleChange={() => console.log()}
             />
