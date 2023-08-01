@@ -7,6 +7,8 @@ module.exports = {
   ],
   theme: {
     colors: {
+      secundary: "#C1C5CF",
+      primary: "#C4CF00",
       error: "#E22222",
       white: "#FFF",
       transparent: "transparent",
@@ -28,7 +30,6 @@ module.exports = {
         },
         active: "#93BC1E",
       },
-      primary: "#C4CF00",
     },
     extend: {
       height: {
