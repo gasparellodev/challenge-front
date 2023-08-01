@@ -1,0 +1,31 @@
+.content {
+  background-color: #252932;
+  width: 260px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  position: relative;
+
+  input {
+    background-color: transparent;
+    outline: none;
+  }
+
+  &::after {
+    width: 100%;
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.icon {
+  cursor: pointer;
+}
