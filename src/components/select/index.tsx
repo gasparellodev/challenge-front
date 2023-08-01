@@ -6,8 +6,10 @@ import styles from "./select.module.scss";
 
 export const MultipleSelect: FC<{
   options?: any[];
+  renderIcon?: boolean;
   width?: number;
-}> = ({ options }) => {
+  boxUp?: boolean;
+}> = ({ options, renderIcon, boxUp }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isOpen, setOpen] = useState<boolean>(false);
   return (
@@ -17,8 +19,8 @@ export const MultipleSelect: FC<{
       >
         {isOpen && (
           <div
-            style={{ zIndex: "-2px" }}
-            className=" flex flex-col px-[12px] absolute border-[#7A7F8D] border-solid border-[1px] bg-[#252932] w-full right-[-1px] h-[300px] top-[35px]"
+            style={{ zIndex: "10" }}
+            className={`flex flex-col px-[12px] absolute border-[#7A7F8D] border-solid border-[1px] bg-[#252932] w-full right-[-1px] h-[300px] top-[${boxUp? "-300":"35"}px]`}
           >
             {options?.map((option) => {
               return (
@@ -32,7 +34,9 @@ export const MultipleSelect: FC<{
           </div>
         )}
 
-        <AjustIcon color={isOpen ? "#93BC1E" : "currentColor"} />
+        {renderIcon && (
+          <AjustIcon color={isOpen ? "#93BC1E" : "currentColor"} />
+        )}
         <p>Selecione uma opção</p>
         <button onClick={() => setOpen(!isOpen)}>
           <Chevron
