@@ -1,6 +1,8 @@
 "use client";
+import { uploadMockImage } from "@/assets";
 import { Button } from "@/components/buttons";
 import { CourseCard } from "@/components/class-card";
+import { Input } from "@/components/inputs";
 import { Search } from "@/components/search";
 import { MultipleSelect } from "@/components/select";
 import { ListIcon } from "@/components/svg-components/list-icon";
@@ -77,10 +79,19 @@ const dataMock = [
 
 const selectMock = ["Produtividade"];
 
+const typeMock = [{ value: "curso", label: "Curso" }];
+
+const categoryMock = [{ value: "produtividade", label: "Produtividade" }];
+
 export default function Home() {
   const [listMiniature, setListMiniature] = useState(true);
   const [selectedPage, setSelectedPage] = useState(1);
   const [length, setLength] = useState();
+  const [courseCreateModal, setCourseCreateModal] = useState(false);
+
+  const handleCreateModal = () => {
+    setCourseCreateModal(!courseCreateModal);
+  };
 
   const handleListView = () => {
     setListMiniature(!listMiniature);
@@ -135,6 +146,7 @@ export default function Home() {
 
         <div>
           <Button
+            handleClick={handleCreateModal}
             iconDirection="left"
             icon={<PlusIcon color="white" />}
             label="Novo curso"
@@ -268,6 +280,144 @@ export default function Home() {
           />
         </div>
       </div>
+
+      {courseCreateModal && (
+        <div className="flex justify-center py-20 absolute w-full h-full bg-opacity-50 bg-button-secundary-default">
+          <div className="relative bg-[#2A2E39] w-[928px] h-[626px] p-[36px] overflow-y-scroll ">
+            <h2 className="font-[700] text-[20px]">Novo curso</h2>
+            {/* <hr className="bg-[#C4C4C4 opacity-10]"/> */}
+
+            <p className="font-[400] text-[18px] pt-8">
+              Prrencha os campos abaixo para cadastrar um novo curso.
+            </p>
+
+            <p className="font-[700] text-[16px] pt-[30px] pb-[20px]">
+              Informações do curso
+            </p>
+
+            <Input
+              className="bg-[#252932] mb-[20px]"
+              title="Nome do curso"
+              handleChange={() => console.log()}
+            />
+
+            <Input
+              className="h-[153px] bg-[#252932] mb-[30px]"
+              title="Descrição"
+              handleChange={() => console.log()}
+            />
+            <div className="grid grid-cols-2 gap-5 mb-5">
+              <div className="flex flex-col gap-5">
+                <div className="bg-[#252932] h-[65px] flex flex-col relative">
+                  <label>Tipo</label>
+                  <select
+                    placeholder="Selecione uma opção"
+                    className="h-[22px] bg-transparent outline-none"
+                  >
+                    <option className="text-primary" value={""}>
+                      Selecione uma opção
+                    </option>
+                    {typeMock.map(({ label, value }) => {
+                      return <option value={value}>{label}</option>;
+                    })}
+                  </select>
+                  <hr className="absolute bottom-0 w-full" />
+                </div>
+
+                <div className="bg-[#252932] h-[65px] flex flex-col relative">
+                  <Input
+                    className="bg-[#252932]"
+                    title="Link de acesso"
+                    handleChange={() => console.log()}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-5">
+                <div className="bg-[#252932] h-[65px] flex flex-col relative">
+                  <label>Categoria</label>
+                  <select
+                    placeholder="Selecione uma opção"
+                    className="h-[22px] bg-transparent outline-none"
+                  >
+                    <option className="text-primary" value={""}>
+                      Selecione uma opção
+                    </option>
+                    {categoryMock.map(({ label, value }) => {
+                      return <option value={value}>{label}</option>;
+                    })}
+                  </select>
+                  <hr className="absolute bottom-0 w-full" />
+                </div>
+
+                <div className="bg-[#252932] h-[65px] flex flex-col relative">
+                  <Input
+                    className="bg-[#252932]"
+                    title="Link de suporte"
+                    handleChange={() => console.log()}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3>Imagem do curso</h3>
+              <em className="text-[#E7E7E7] font-[400] text-[12px]">
+                Tamanho mínimo: 720 x 720
+              </em>
+              <img
+                className="pt-5  object-top rounded-md mb-5"
+                src={uploadMockImage}
+              />
+              <Button
+                width="109px"
+                height="48px"
+                label="Upload"
+                theme="outline"
+                className="rounded-lg"
+              />
+            </div>
+
+            <Button
+              handleClick={handleCreateModal}
+              label=""
+              width="24px"
+              height="24px"
+              className="bg-transparent absolute right-5 top-5 hover:bg-[#fff]"
+              icon={
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.4831 12.9883L10.4949 8.00068L15.4831 3.01302C16.1702 2.32497 16.1702 1.20818 15.4848 0.51826C14.7959 -0.173346 13.6806 -0.171567 12.9917 0.51648L7.99999 5.50769L3.00831 0.51648C2.31939 -0.171567 1.20406 -0.173346 0.515137 0.51826C-0.172007 1.20809 -0.172008 2.32488 0.516912 3.01302L5.50513 8.00068L0.516912 12.9883C-0.172008 13.6764 -0.172007 14.7932 0.515137 15.4831C0.858753 15.8289 1.31155 16 1.76266 16C2.21376 16 2.66478 15.8271 3.0084 15.4848L8.00008 10.4936L12.9918 15.4848C13.3354 15.8289 13.7864 16 14.2375 16C14.6886 16 15.1414 15.8271 15.485 15.4831C16.172 14.7932 16.172 13.6764 15.4831 12.9883Z"
+                    fill="#93BC1E"
+                  />
+                </svg>
+              }
+            />
+
+            <div className="absolute flex flex-row gap-5 right-10 pb-5">
+              <Button
+                width="136px"
+                height="48px"
+                theme="outline"
+                label="Cancelar"
+                handleClick={handleCreateModal}
+              />
+              <Button
+                width="209px"
+                height="48px"
+                theme="primary"
+                label="Cadastrar curso"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
