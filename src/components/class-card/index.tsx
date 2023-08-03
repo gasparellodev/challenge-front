@@ -30,7 +30,7 @@ export const CourseCard: FC<{ course: IClassCard }> = ({ course }) => {
   };
 
   return (
-    <div className="bg-[#2A2E39] h-[170px] w-[452px] flex-row flex p-[18px]">
+    <div className="bg-[#2A2E39] sm:h-[170px] w-[100%] sm:w-[452px] flex-row flex p-[18px]">
       <Image
         alt={course.course_name}
         src={course.course_image ? course.course_image : defaultCourseImage}

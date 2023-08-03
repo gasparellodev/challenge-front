@@ -10,9 +10,9 @@ export const Navigation: FC = () => {
       "https://media.licdn.com/dms/image/D4D03AQHMXuKFlW-Wsg/profile-displayphoto-shrink_800_800/0/1668219599625?e=2147483647&v=beta&t=v5j5kCUfjfC5IctNYRYqMIMp6PxJduNzqrhGdzA4icc",
   };
   return (
-    <header className="bg-[#1E2126] fixed w-full flex justify-between items-center">
-      <BrandLogin />
-      <div className="flex items-center pr-10">
+    <header className="bg-[#1E2126] fixed w-full flex justify-end  md:justify-between items-center">
+      <BrandLogin className="hidden md:block" />
+      <div className="flex items-center pr-10 pt-5 md:pt-0">
         <button>
           <HomeIcon />
         </button>

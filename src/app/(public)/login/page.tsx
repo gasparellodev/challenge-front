@@ -12,14 +12,9 @@ import { Toast } from "@/components/toasted";
 import Image from "next/image";
 import {
   ChangeEvent,
-  KeyboardEventHandler,
-  useEffect,
   useRef,
-  useState,
-  KeyboardEvent,
-  HtmlHTMLAttributes,
+  useState
 } from "react";
-import { mockComponent } from "react-dom/test-utils";
 
 const dataMock = [
   {

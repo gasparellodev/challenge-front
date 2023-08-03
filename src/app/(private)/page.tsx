@@ -8,8 +8,7 @@ import { MultipleSelect } from "@/components/select";
 import { ListIcon } from "@/components/svg-components/list-icon";
 import { ListMiniature } from "@/components/svg-components/list-miniature";
 import { PlusIcon } from "@/components/svg-components/plus-icon";
-import Image from "next/image";
-import { use, useState } from "react";
+import { useState } from "react";
 
 const dataMock = [
   {
@@ -120,26 +119,30 @@ export default function Home() {
   };
 
   return (
-    <section className="flex h-full flex-col items-center justify-between py-20">
+    <section className="flex h-full flex-col items-center justify-between py-20 sm:w-[100vw] sm:overflow-hidden">
       {/* HEAD */}
-      <div className="h-[76px] flex flex-row w-full bg-[#2A2E39] px-[20px] justify-around items-center">
-        <div className="flex flex-row">
-          <h2 className="font-[700] text-[22px]">Meus cursos</h2>
+
+
+
+
+      <div className="relative sm:h-[76px] flex flex-col sm:flex-row w-full bg-[#2A2E39] px-[20px] justify-around sm:items-center">
+        <div className="flex flex-col">
+          <h2 className="font-[700] text-[22px] text-center sm:text-left">Meus cursos</h2>
         </div>
 
-        <div className="flex flex-row items-center h-full">
-          <p className="font-[700] text-secundary text-[10px] mr-[21px]">
+        <div className="hidden md:flex flex-row items-center h-full">
+          <p className="font-[700] text-secundary text-[10px] mr-[21px] hidden lg:block">
             FILTRAR POR CATEGORIA:{" "}
           </p>
           <MultipleSelect options={selectMock} />
         </div>
 
-        <div>
+        <div className="py-3 sm:py-0">
           <Search />
         </div>
 
-        <div className="flex flex-row gap-3">
-          <p>VISUALIZAÇÃO</p>
+        <div className="flex flex-row gap-3 py-5 sm:py-0">
+          <p className="hidden lg:block">VISUALIZAÇÃO</p>
           <button onClick={handleListView}>
             <ListMiniature color={listMiniature ? "#93BC1E" : "#646D85"} />
           </button>
@@ -149,7 +152,7 @@ export default function Home() {
           </button>
         </div>
 
-        <div>
+        <div className="absolute bottom-[-10px] right-[20px] sm:relative sm:bottom-0 sm:right-0 py-5 sm:py-0">
           <Button
             handleClick={handleCreateModal}
             iconDirection="left"
@@ -159,15 +162,19 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="gap-4 py-5 grid grid-cols-3 sm:grid-cols- md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 ">
-        {/* CARDS */}
-        {dataMock.map((data) => {
-          return <CourseCard course={data} />;
-        })}
+
+
+      <div className="h-[80%] mt-40 pb-40 sm:mt-20 sm:pb-20 absolute overflow-y-scroll">
+        <div className="gap-4 py-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 overflow-scroll">
+          {/* CARDS */}
+          {dataMock.map((data) => {
+            return <CourseCard course={data} />;
+          })}
+        </div>
       </div>
 
       {/* FOOTER */}
-      <div className="w-full absolute bottom-0 left-0 pb-[34px] flex flex-row justify-between px-10">
+      <div className="w-full z-50 bg-[#1F2126] fixed bottom-0 left-0 items-center h-24 sm:h-20 flex flex-col sm:flex-row justify-around sm:justify-between px-10  sm:py-0">
         <MultipleSelect
           boxUp
           options={[
