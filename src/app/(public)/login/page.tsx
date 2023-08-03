@@ -71,7 +71,7 @@ export default function LoginPage() {
 
   const FirstLayer = () => {
     return (
-      <div className="flex-1">
+      <div className="flex-1 p-5 md:p-0">
         <h2 className="text-base mb-10">Acesse usando seu e-mail.</h2>
         <Input
           handleChange={(e) => {
@@ -132,7 +132,7 @@ export default function LoginPage() {
         }
       };
     return (
-      <div className="flex-1">
+      <div className="flex-1 p-5 md:p-0">
         <button tabIndex={30} onClick={() => handleLayer(1)}>
           <h2 className="text-base mb-10 flex items-center  gap-3">
             <GoBack />
@@ -186,7 +186,7 @@ export default function LoginPage() {
 
   const LastLayer = () => {
     return (
-      <div className="flex-1">
+      <div className="p-5 md:p-0 flex-1">
         <button tabIndex={30} onClick={() => handleLayer(2)}>
           <h2 className="text-base mb-10 flex items-center  gap-3">
             <GoBack />
@@ -250,44 +250,42 @@ export default function LoginPage() {
   };
   return (
     <section className="w-full h-screen flex justify-center items-center">
-      <div className="absolute w-972 h-440 z-10">
-        <div className="flex flex-row w-full gap-40">
-          <div className=" flex-1 flex-col">
-            <BrandLogin className="items-end" />
-            <h2 className=" text-right font-roboto text-[39px] text-white">
-              Seja bem vindo à<br />
-              <em className="text-right text-primary text-[39px]">
-                Área do aluno
-              </em>
-            </h2>
-          </div>
-
-          {layer && renderLayer(layer)}
+    <div className="absolute w-full h-full z-10">
+      <div className="flex flex-col md:flex-row w-full gap-40">
+        <div className="flex-1 flex md:hidden flex-col items-center">
+          <BrandLogin />
+          <h2 className="text-center font-roboto text-[39px] text-white">
+            Seja bem vindo à<br />
+            <em className="text-primary text-[39px]">Área do aluno</em>
+          </h2>
         </div>
-      </div>
-      <div style={{ width: "100%", height: "100%", position: "relative" }}>
-        <Image
-          alt="Mountains"
-          src={loginImages.background}
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
 
-      {toast && (
-        <Toast
-          status={false}
-          title={status ? "Token enviado!" : `Erro ao enviar o token!`}
-          description={
-            status
-              ? "Um token de acesso foi enviado para o seu e-mail, utilize o mesmo para acessar nosso sistema."
-              : "Ocorreu um problema ao enviar o token de acesso para o seu e-mail, tente novamente mais tarde."
-          }
-          handleClose={() => {
-            setToast(false);
-          }}
-        />
-      )}
-    </section>
+        {layer && renderLayer(layer)}
+      </div>
+    </div>
+    <div style={{ width: "100%", height: "100%", position: "relative" }}>
+      <Image
+        alt="Mountains"
+        src={loginImages.background}
+        layout="fill"
+        objectFit="cover"
+      />
+    </div>
+
+    {toast && (
+      <Toast
+        status={false}
+        title={status ? "Token enviado!" : "Erro ao enviar o token!"}
+        description={
+          status
+            ? "Um token de acesso foi enviado para o seu e-mail, utilize o mesmo para acessar nosso sistema."
+            : "Ocorreu um problema ao enviar o token de acesso para o seu e-mail, tente novamente mais tarde."
+        }
+        handleClose={() => {
+          setToast(false);
+        }}
+      />
+    )}
+  </section>
   );
 }

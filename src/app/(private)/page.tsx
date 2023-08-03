@@ -294,7 +294,7 @@ export default function Home() {
       </div>
 
       {courseCreateModal && (
-        <div className="flex justify-center py-20 absolute w-full h-full bg-opacity-50 bg-button-secundary-default">
+        <div className="flex  top-0 justify-center py-20 absolute w-full h-full bg-opacity-50 bg-button-secundary-default">
           <div className="relative bg-[#2A2E39] w-[928px] h-[626px] p-[36px] overflow-y-scroll ">
             <h2 className="font-[700] text-[20px]">Novo curso</h2>
             {/* <hr className="bg-[#C4C4C4 opacity-10]"/> */}
