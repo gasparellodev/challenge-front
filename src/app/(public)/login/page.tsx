@@ -214,7 +214,7 @@ export default function LoginPage() {
               <div>
                 <p>{e.name}</p>
                 <p className="text-[#D1D1D1] flex items-center">
-                  <MailIcon className="mr-2" />
+                  <MailIcon className="mr-2 max-w-[200px]" />
                   {e.email}
                 </p>
               </div>
@@ -250,9 +250,9 @@ export default function LoginPage() {
   };
   return (
     <section className="w-full h-screen flex justify-center items-center">
-    <div className="absolute w-full h-full z-10">
+    <div className="absolute w-full h-full z-10 flex items-center">
       <div className="flex flex-col md:flex-row w-full gap-40">
-        <div className="flex-1 flex md:hidden flex-col items-center">
+        <div className="flex-1 hidden md:flex flex-col items-center">
           <BrandLogin />
           <h2 className="text-center font-roboto text-[39px] text-white">
             Seja bem vindo à<br />
