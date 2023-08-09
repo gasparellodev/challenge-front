@@ -41,6 +41,16 @@ In this project we will see routing of a main page and a login page, using the l
 - `iconDirection?:` <em style="color:purple;">"left" | "right"</em> <label> -> Icon direction relative to text</label>
 - `theme:` <em style="color:purple;">"primary" | "secundary" | "outline" | "disabled" | "load"</em> <label> -> Presets styles buttons themes</label>
 
+###  Select
+
+ A versatile SELECT component with custom properties
+
+- `options:` <em style="color:purple;">string[]</em> <label> -> options available in select.</label>
+- `renderIcon?:` <em style="color:purple;">boolean</em> <label> -> Shows a ornament icon into select box.</label>
+- `width?:` <em style="color:purple;">string</em>
+- `boxUp?:` <em style="color:purple;">boolean</em> <label> -> indicate if box with the options will render to up. To bottom is default.</label>
+
+
 ### Svgs Components
 
  Svgs transformed into jsx components for customizing and dynamicizing properties.
@@ -64,8 +74,12 @@ The chevron (arrow) svg has an extra property indicating the direction the arrow
 - `handleClose:` <em style="color:purple;">callback function</em> <label> -> Use to close toast.</label>
 
 
+## Technologies
 
+###  External libraries
 
-
+ - Tailwind
+ - SASS
+ - Next
 
   
