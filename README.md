@@ -22,6 +22,10 @@ In this project we will see routing of a main page and a login page, using the l
 
    `npm run start` or 'yarn start'
 
+## Page Summary
+- `/` <em style="color:purple;"> Main page after login, where available courses will be listed.</em>
+- `/login` <em style="color:purple;"> Login page if you don't have an authenticated user saved in the cookie or cache.</em>
+
 ## Custom Components
 
 ###  Button
@@ -45,6 +49,21 @@ All svg components are given classname and color properties by default for custo
 
 - `className?:` <em style="color:purple;">string</em>
 - `color?:` <em style="color:purple;">string</em>
+
+The chevron (arrow) svg has an extra property indicating the direction the arrow will point to, using the css transform rotate tool
+
+- `direction?:` <em style="color:purple;">"bottom" | "top"</em> <label> -> "top" is default</label>
+
+### Toast
+
+ A toast callback component indicating success or error. If not closed manually, a 10 second timer will close by itself.
+
+- `status:` <em style="color:purple;">boolean</em> <label> -> Indicate what theme will render, red to error and green to success</label>
+- `title:` <em style="color:purple;">string</em>
+- `description:` <em style="color:purple;">string</em>
+- `handleClose:` <em style="color:purple;">callback function</em> <label> -> Use to close toast.</label>
+
+
 
 
 
